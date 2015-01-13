@@ -1,0 +1,23 @@
+<div class="dropdown">
+  <button class="btn btn-default" type="button" data-toggle="dropdown">
+  全て
+  <span class="caret"></span>
+  </button>
+  <ul ng-model="postStatus" ng-init="postStatus = ''" class="dropdown-menu">
+    <li><a ng-click="postStatus = ''">全て</a></li>
+    <li><a ng-click="postStatus = 1">既読のみ</a></li>
+    <li><a ng-click="postStatus = 2">未読のみ</a></li>
+  </ul>
+</div>
+<div ng-model="test" ng-init="test = true"></div>
+<ul class="post-ul">
+  <li class="post-list" ng-class="{'post-readed':postList.status == 1,'post-unreaded':postList.status == 2}"  ng-repeat="postList in postLists | filter:{status:postStatus}">
+    <div class="post-header">
+    {{postList.date}}
+    </div>
+
+    <div class="post-content">
+    {{postList.message}}
+    </div>
+  </li>
+</ul>
